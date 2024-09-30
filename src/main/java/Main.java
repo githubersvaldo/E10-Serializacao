@@ -34,7 +34,7 @@ public class Main {
             System.out.println(1);
             System.out.println(e.getMessage());
         }
-        //System.out.println(cc);
+        System.out.println(cc);
         System.out.println(cc2);
 
     }
