@@ -1,8 +1,6 @@
 import sun.nio.cs.Surrogate;
 
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.Random;
 
 public abstract class Conta implements ITaxas, Serializable {
@@ -114,6 +112,14 @@ public abstract class Conta implements ITaxas, Serializable {
             e.printStackTrace();
             throw new NaoFoiPossivelSalvar("Ocoreu um erro ao salvar o arquivo");
         }
+    }
+    public Conta Ver_C_Salva(int agenciaT, int numeroConta) throws IOException, ClassNotFoundException {
+        FileInputStream VemAqui = new FileInputStream(agenciaT + "-" + numeroConta + ".ser");
+        ObjectInputStream EsseMemo = new ObjectInputStream(VemAqui);
+        Conta VeriCont = (Conta) EsseMemo.readObject();
+        EsseMemo.close();
+        VemAqui.close();
+        return VeriCont;
     }
 
     public int getNumero() {
